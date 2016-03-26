@@ -20,7 +20,6 @@ help_text = "{}\n{}\n{}\n{}\n{}\n{}".format(
 p_bot_hi = re.compile("pybot[\s]*hi")
 p_bot_joke = re.compile("pybot[\s]*joke")
 p_bot_attach = re.compile("pybot[\s]*attachment")
-p_bot_video = re.compile("pybot[\s]*video")
 p_bot_help = re.compile("pybot[\s]*help")
 
 def process_message(data):
@@ -37,10 +36,6 @@ def process_message(data):
     elif p_bot_attach.match(data['text']):
         txt = "Beep Beep Boop is a ridiculously simple hosting platform for your Slackbots."
         attachments.append([data['channel'], txt, build_demo_attachment(txt)])
-
-    elif p_bot_video.match(data['text']):
-    	txt = "This is a YouTube video."
-        outputs.append([data['channel'], "{}".format(help_text)])
 
     elif p_bot_help.match(data['text']):
         outputs.append([data['channel'], "{}".format(help_text)])
